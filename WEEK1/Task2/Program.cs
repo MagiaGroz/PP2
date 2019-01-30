@@ -12,7 +12,7 @@ namespace ConsoleApp2
         string ID;
         int Year = 1;
         public Student(string NAME, string ID)
-        {
+        { 
             Name = NAME;
             this.ID = ID;
         }

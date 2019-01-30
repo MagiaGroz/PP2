@@ -8,19 +8,26 @@ namespace ConsoleApp3
 {
     class Program
     {
+        static void Double(string[] nums) // Метод дубликации
+        {
+            int[] a = new int[nums.Length * 2]; // массив который мы будем выводить будет больше начального 
+                                                                                            
+
+           
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = int.Parse(nums[i/2]); // a[i] будет увеличиватся но nums[i] только через 2 числа 
+            }
+            for(int i = 0; i < a.Length; i++)
+            {
+                Console.Write(a[i] + " "); // выводим
+            }
+        }
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine()); // size of massive
-            int[] a = new int[n * 2];
-
             string[] nums = Console.ReadLine().Split();  // take separate inetegers
-            for (int i = 0; i < n; i++)
-            {
-                a[i] = int.Parse(nums[i]);  // filling massive
-                a[i + 1] = int.Parse(nums[i]);
-                Console.Write(a[i] + " " + a[i + 1] + " ");  // print result
-
-            }
+            Double(nums);
             Console.ReadKey();
 
         }

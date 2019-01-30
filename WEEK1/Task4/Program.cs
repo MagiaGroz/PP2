@@ -14,7 +14,7 @@ namespace ConsoleApp4
 
             for (int i = 0; i < n; i++)
             {
-                int num = -1;
+                int num = -1;  // берем -1 так как i начинается с нуля
                 for (int j = 0; j < n; j++)
                 {
 
