@@ -13,7 +13,7 @@ namespace Task2
         {
             
 
-            StreamReader doc = new StreamReader(@"C:\Users\User\Desktop\File\Tree\papka\Prime.txt");   //новый обьект
+            StreamReader doc = new StreamReader(@"C:\Users\User\Desktop\File\Tree\papka\Prime.txt");   //наша директория
 
             string[] word = doc.ReadLine().Split(); //считать с документа
 

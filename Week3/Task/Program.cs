@@ -13,10 +13,8 @@ namespace FarManager3
             get;
             set;
         }
-       
-
-
-       public int SelectedItem // выбранный элемент то есть подсвеченный
+     
+       public int Cursor // выбранный элемент то есть подсвеченный
         {
             get;
             set;
@@ -36,7 +34,7 @@ namespace FarManager3
 
             {
                
-                if (i == SelectedItem) // отрисовка курсора
+                if (i == Cursor) // отрисовка курсора
                 {                                      
                     Console.BackgroundColor = ConsoleColor.Blue;
                 }
@@ -92,11 +90,7 @@ enum ViewMode // создаем енумерэйтор
                 new Layer
 
                 {
-
-                    Content = dir.GetFileSystemInfos()
-
-
-                     
+                    Content = dir.GetFileSystemInfos()                    // кладем контент
                 }
              
             );
@@ -106,11 +100,11 @@ enum ViewMode // создаем енумерэйтор
 
             bool esc = false; // булевая переменная которая поначалу будет отрицательной
 
-            while (!esc)
+            while (!esc) // в первый раз он в любом случае зайдет сюда и покажет директорию
 
             {
 
-                if (viewMode == ViewMode.ShowDirContent) // если включен режим прсомотра директории
+                if (viewMode == ViewMode.ShowDirContent) // если включен режим просмотра директории
 
                 {
                     try  // обрабатываем исключение про которое сказал ассистент
@@ -140,7 +134,7 @@ enum ViewMode // создаем енумерэйтор
 
                         string name = Console.ReadLine(); // Вводим новое имя для файла или папки
 
-                        int x3 = history.Peek().SelectedItem; // захватываем индекс выбранного курсором файла или папки
+                        int x3 = history.Peek().Cursor; // захватываем индекс выбранного курсором файла или папки
 
                         FileSystemInfo fileSystemInfo3 = history.Peek().Content[x3]; // берем его по индексу 
 
@@ -161,7 +155,7 @@ enum ViewMode // создаем енумерэйтор
 
                         {
 
-                            FileInfo fileInfo = fileSystemInfo3 as FileInfo; // если это не папка а файл
+                            FileInfo fileInfo = fileSystemInfo3 as FileInfo; // если это не папка а файл то превращаем файл систем инфо в файл инфо
 
                             File.Move(fileSystemInfo3.FullName, fileInfo.Directory.FullName + "/" + name); // так же прям меняем имя
 
@@ -175,11 +169,11 @@ enum ViewMode // создаем енумерэйтор
 
                     case ConsoleKey.Delete: // клавиша удаления
 
-                        int x2 = history.Peek().SelectedItem; // сохранения индекса курсора
+                        int x2 = history.Peek().Cursor; // сохранения индекса курсора
 
                         FileSystemInfo fileSystemInfo2 = history.Peek().Content[x2]; // передаем контент курсора
 
-                        history.Peek().SelectedItem--; // перемещаем курсора на индекс ниже
+                        history.Peek().Cursor--; // перемещаем курсора на индекс ниже
 
                         if (fileSystemInfo2.GetType() == typeof(DirectoryInfo)) // если директория 
 
@@ -210,30 +204,30 @@ enum ViewMode // создаем енумерэйтор
 
                     case ConsoleKey.UpArrow: // вверх
 
-                        history.Peek().SelectedItem--; // индекс минус
+                        history.Peek().Cursor--; // индекс минус
                         
-                        if (history.Peek().SelectedItem == -1) // если вышло за границы массива
+                        if (history.Peek().Cursor == -1) // если вышло за границы массива
                         {
 
-                            history.Peek().SelectedItem = history.Peek().Content.Length - 1; // переводим в конец
+                            history.Peek().Cursor = history.Peek().Content.Length - 1; // переводим в конец
                         }
 
                         break;
 
                     case ConsoleKey.DownArrow: // вниз
 
-                        history.Peek().SelectedItem++; // индекс плюс
-                        if (history.Peek().SelectedItem == history.Peek().Content.Length) // если вышло за границы массива
+                        history.Peek().Cursor++; // индекс плюс
+                        if (history.Peek().Cursor == history.Peek().Content.Length) // если вышло за границы массива
                         {
 
-                            history.Peek().SelectedItem = 0; // переводим в начало курсор
+                            history.Peek().Cursor = 0; // переводим в начало курсор
                         }
 
                         break;
 
                     case ConsoleKey.Enter: // открывание 
 
-                        int x = history.Peek().SelectedItem; // сохраняем индекс выбранного курсором файла
+                        int x = history.Peek().Cursor; // сохраняем индекс выбранного курсором файла
 
                         FileSystemInfo fileSystemInfo = history.Peek().Content[x]; // берем его как файла а не как индекс
 

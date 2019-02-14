@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp3
 {
@@ -10,7 +6,7 @@ namespace ConsoleApp3
     {
         static void Double(string[] nums) // Метод дубликации
         {
-            int[] a = new int[nums.Length * 2]; // массив который мы будем выводить будет больше начального 
+            int[] a = new int[nums.Length * 2]; // массив который мы будем выводить будет больше начального в два раза
                                                                                             
 
            
@@ -25,8 +21,8 @@ namespace ConsoleApp3
         }
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine()); // size of massive
-            string[] nums = Console.ReadLine().Split();  // take separate inetegers
+            int n = int.Parse(Console.ReadLine()); // размер массива
+            string[] nums = Console.ReadLine().Split();  // чтобы взять числа по отдельности
             Double(nums);
             Console.ReadKey();
 
