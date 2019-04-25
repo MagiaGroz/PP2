@@ -18,8 +18,8 @@ namespace Task1
             thread1.Name = "thread1";
             thread2.Name = "thread2";
             thread3.Name = "thread3";
-            Thread[] threads = new Thread[3] { thread1, thread2, thread3 };
-            for (int i = 0; i < 3; i++)
+            Thread[] threads = new Thread[3] { thread1, thread2, thread3 }; //создание массива трэдов
+            for (int i = 0; i < 3; i++) // запуск трэда
             {
                 threads[i].Start();
             }
